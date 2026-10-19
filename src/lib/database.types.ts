@@ -144,10 +144,7 @@ export type Database = {
       };
     };
     Views: { [_ in never]: never };
-    Functions: {
-      is_org_owner: { Args: { org_id: string }; Returns: boolean };
-      has_entitlement: { Args: { org_id: string }; Returns: boolean };
-    };
+    Functions: { [_ in never]: never };
     Enums: { [_ in never]: never };
     CompositeTypes: { [_ in never]: never };
   };

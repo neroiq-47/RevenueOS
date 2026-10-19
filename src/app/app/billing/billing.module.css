@@ -1,0 +1,36 @@
+.page { display: grid; gap: 24px; }
+.header { display: grid; gap: 12px; justify-items: start; }
+.title { font-size: clamp(28px, 5vw, 40px); }
+
+.grid { display: grid; gap: 20px; align-items: start; }
+@media (min-width: 860px) {
+  .grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+}
+
+.plan { display: grid; gap: 20px; }
+.planName { font-size: 20px; }
+.price { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; }
+.amount {
+  font-size: 48px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;
+  background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.list li { display: flex; gap: 10px; align-items: flex-start; color: var(--text-2); font-size: 15px; }
+.check {
+  flex: none; display: inline-grid; place-items: center; width: 20px; height: 20px; margin-top: 1px;
+  border-radius: 50%; font-size: 11px; color: var(--brand-3);
+  background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.35);
+}
+.fine { margin: 0; font-size: 12px; }
+
+.sideTitle { font-size: 15px; margin-bottom: 14px; }
+.facts { margin: 0; display: grid; gap: 12px; }
+.facts > div { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
+.facts dt { color: var(--text-3); font-size: 13px; }
+.facts dd { margin: 0; font-size: 14px; text-align: right; overflow-wrap: anywhere; }
+
+.usage { margin: 0 0 10px; font-size: 22px; font-weight: 600; }
+.meter {
+  height: 8px; border-radius: 999px; background: rgba(255, 255, 255, 0.06); overflow: hidden; margin-bottom: 10px;
+}
+.meter span { display: block; height: 100%; background: var(--gradient); border-radius: inherit; }
