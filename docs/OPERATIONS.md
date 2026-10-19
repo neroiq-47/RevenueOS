@@ -23,7 +23,7 @@ Minimum controls for the pilot. Review this before any customer data is uploaded
 
 ## Logging
 - Server logs record error types and ids only, never uploaded rows, contact details or draft text.
-- Vercel and Supabase logs are restricted to project members.
+- Cloudflare and Supabase logs are restricted to project members.
 
 ## Data export and deletion
 - Owners can download all their data as JSON from **Account → Export my data**.

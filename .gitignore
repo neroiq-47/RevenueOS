@@ -9,3 +9,6 @@ next-env.d.ts
 .vercel
 .DS_Store
 .netlify
+.open-next/
+.wrangler/
+.dev.vars
