@@ -60,7 +60,7 @@ export default function PrivacyPage() {
           (for example deal name, contact name, amount, stage and days inactive) are sent. Your full CSV is not sent.
         </li>
         <li>
-          <strong>Vercel</strong> — application hosting.
+          <strong>Cloudflare</strong> — application hosting.
         </li>
       </ul>
       <p>RevenueOS never sends email to your contacts. You copy drafts and send them yourself.</p>

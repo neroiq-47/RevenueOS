@@ -8,7 +8,7 @@ This is the 48-hour MVP described in the build outline: a narrow, self-service p
 
 | Layer | Tech |
 | --- | --- |
-| App + hosting | Next.js 15 (App Router, TypeScript) on Vercel |
+| App + hosting | Next.js 15 (App Router, TypeScript) on Cloudflare Workers (OpenNext) |
 | Auth + data | Supabase Auth + Postgres with row level security on every customer table |
 | AI | OpenAI, server-side only, length-bounded and capped at 100 drafts / org / month |
 | Payments | Stripe hosted Checkout + billing portal, one $499/month price |
@@ -49,9 +49,17 @@ Secrets without the `NEXT_PUBLIC_` prefix stay on the server. `SUPABASE_SECRET_K
 
 Database isolation test: run [`supabase/tests/rls_cross_tenant.sql`](supabase/tests/rls_cross_tenant.sql) in the Supabase SQL editor. It creates two throwaway tenants, checks that neither can read or change the other's data and that an unpaid tenant cannot write, then rolls everything back. It ends with `RLS TESTS PASSED`.
 
-## Deploy (Vercel)
+## Deploy (Cloudflare Workers)
 
-Import the repo in Vercel, add every variable from `.env.example` (with `NEXT_PUBLIC_SITE_URL` set to your domain), deploy, then point the Stripe webhook and Supabase redirect URLs at the production domain.
+The app runs on Cloudflare Workers through the OpenNext adapter (`wrangler.jsonc`, `open-next.config.ts`).
+
+1. In the Cloudflare dashboard: Workers & Pages → Create → Import a repository → `neroiq-47/RevenueOS`, branch `main`.
+2. Build command: `npx opennextjs-cloudflare build`. Deploy command: `npx opennextjs-cloudflare deploy`.
+3. **Build variables** (inlined into the browser bundle at build time): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL`.
+4. **Worker variables and secrets** (runtime): the same three public values, plus `STRIPE_PRICE_ID`, and as secrets `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `SUPABASE_SECRET_KEY`, `OPENAI_API_KEY`.
+5. Point the Stripe webhook and the Supabase auth redirect URL at the Worker's URL.
+
+Local check: `npm run cf:preview` builds and serves the Worker on localhost (put secrets in `.dev.vars`).
 
 ## Project layout
 
