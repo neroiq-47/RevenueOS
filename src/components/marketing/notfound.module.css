@@ -1,0 +1,44 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+.main {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 20px;
+  text-align: center;
+  min-height: calc(100vh - 65px);
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+.mark {
+  filter: drop-shadow(0 0 24px rgba(46, 89, 246, 0.6));
+  animation: spin 40s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.code {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--warning);
+}
+.title {
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 700;
+  max-width: 680px;
+}
+.lead {
+  margin: 0;
+  max-width: 480px;
+  color: var(--text-2);
+  font-size: 17px;
+}
+.page :global(a:focus-visible) {
+  outline: 2px solid var(--brand-3);
+  outline-offset: 3px;
+  border-radius: 10px;
+}

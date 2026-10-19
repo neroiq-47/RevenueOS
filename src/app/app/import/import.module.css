@@ -1,0 +1,31 @@
+.page { display: grid; gap: 28px; }
+.title { font-size: clamp(28px, 4vw, 40px); margin-top: 12px; }
+.h2 { font-size: 18px; }
+
+.form { padding: 20px; display: grid; gap: 16px; }
+
+.drop {
+  display: flex; align-items: center; gap: 16px; padding: 28px 24px; cursor: pointer;
+  border: 1.5px dashed var(--border-strong); border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.25); transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.drop:hover { border-color: rgba(255, 255, 255, 0.3); }
+.drop:focus-within { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(46, 89, 246, 0.25); }
+.dropActive { border-color: var(--brand-3); background: rgba(34, 211, 238, 0.06); box-shadow: 0 0 40px -12px var(--brand-3); }
+.dropReady { border-style: solid; border-color: rgba(46, 89, 246, 0.6); }
+.dropIcon {
+  flex: none; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+  background: var(--gradient-soft); border: 1px solid var(--border-strong); color: var(--brand-3);
+  box-shadow: 0 0 30px -10px var(--brand-glow);
+}
+.dropText { display: grid; gap: 2px; min-width: 0; overflow-wrap: anywhere; font-size: 14px; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+.result { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.errorTable { max-height: 360px; overflow-y: auto; border-radius: 10px; background: rgba(0, 0, 0, 0.2); }
+.errorTable td { color: var(--text); padding: 10px 12px; }
+.errorTable th { padding: 10px 12px; }
+
+.columns { overflow: hidden; }
+.columnsHead { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 20px 20px 8px; }
